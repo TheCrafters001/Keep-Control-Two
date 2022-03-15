@@ -1,0 +1,86 @@
+<block:-1,-2,150,150,720,center>
+Keep Control 2 (Working Title)
+by TheCrafters001
+
+Mapping
+===============
+TheCrafters001
+
+Story
+===============
+TheCrafters001
+
+Music
+===============
+Wingless Seraph (YouFulca)
+
+Art
+===============
+KADOKAWA
+Victor Moura
+Caz Wolf
+</block>
+
+<block:-1,-2,150,150,720,center>
+Plugins
+
+SumRndmDde
+==========
+SRD_GameUpgrade
+SRD_SuperToolsEngine
+SRD_VideoWait
+SRD_AutoNameBox
+SRD_CameraCore
+SRD_SmoothCamera
+SRD_GameOverCore
+SRD_RetryUpgrade
+SRD_PluginUpdater
+SRD_PreloaderCore
+SRC_ShakingText
+
+Fallen Angel Olivia
+===================
+Olivia_AntiPlayerStress
+Olivia_MapDisplayName
+
+Irina's Plugins
+===============
+Irina_AutoMessageColor
+
+FeniXEngine Contributors
+========================
+X_SocialMediaButtons
+
+Florian van Strien
+==================
+GameJolt API plugin for RPG Maker MV
+
+Galv
+==================
+GALV_RollCredits
+</block>
+
+<block:-1,-2,150,150,720,center>
+Plugins (Cont.)
+
+Yanfly Engine Plugins
+=====================
+YEP_CoreEngine
+YEP_FpsSynchOption
+YEP_KeyboardConfig
+YEP_MainMenuManager
+YEP_MoveRouteCore
+YEP_MessageCore
+YEP_SaveCore
+
+Thank you to all plugin makers
+for all your hard work!
+</block>
+
+<block:-1,-2,150,150,720,center>
+Special Thanks
+
+Turbo Makes Games   FrozeniumZ
+MimikyuBlooky666   Niqx
+and YOU!
+</block>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Log in to Game Jolt</title>
+		<meta charset="utf-8"/>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+		<link rel="icon" href="../../icon/icon.png" type="image/png">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5/dist/css/bootstrap-nightshade.min.css" rel="stylesheet">
+		<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
+			
+			@media (min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+			
+			html,
+			body {
+				height: 100%;
+			}
+			
+			body {
+				display: flex;
+				align-items: center;
+				padding-top: 40px;
+				padding-bottom: 40px;
+				background-color: #f5f5f5;
+			}
+			
+			.form-signin {
+				width: 100%;
+				max-width: 330px;
+				padding: 15px;
+				margin: auto;
+			}
+			
+			.form-signin .checkbox {
+				font-weight: 400;
+			}
+			
+			.form-signin .form-floating:focus-within {
+				z-index: 2;
+			}
+			
+			.form-signin input[type="email"] {
+				margin-bottom: -1px;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+			
+			.form-signin input[type="password"] {
+				margin-bottom: 10px;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+			p#token-help-info{
+				display: none;
+				padding: 2px 0px 5px 0px;
+			}
+			p#login-error{
+				display: none;
+				padding: 5px 0px 5px 0px;
+				color: red;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body class="text-center">
+		<main class="form-signin">
+			<form>
+			  <img class="mb-4" id="GameJoltLogo" src="GameJoltLogo.svg" alt="Game Jolt logo">
+			  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+			  <p>Log in to GameJolt to earn trophies, highscores and more!</p>
+		  
+			  <p id="login-error">We couldn't log you in! Please check your username and game token and try again.</p>
+
+			  <div class="form-floating">
+				<input type="username" class="form-control" id="username" placeholder="UserName">
+				<label for="username">Username</label>
+			  </div>
+			  <div class="form-floating">
+				<input type="password" class="form-control" id="token" placeholder="Game token">
+				<label for="token">Game token</label>
+			  </div>
+
+			  </span><a tabindex="0" href="javascript:void(0);" id="token-help">(What is a Game Token?)</a>
+			  <p id="token-help-info">Your <a href="https://gamejolt.com/help/tokens" target="_blank">game token</a> is like a special password you use to log into games that support high scores and achievements. Click your profile icon on the top right, then click Game Token.</p>
+
+			  <button class="w-100 btn btn-lg btn-primary" id="loginButton" type="submit">Sign in</button>
+			  <p><a id="register" href="javascript:void(0);">Sign up</a> - <a id="cancel" href="javascript:void(0);" tabindex="4">Cancel</a></p>
+			</form>
+		</main>
+		<script>
+			var base_uri = "http://gamejolt.com/api/game/v1_2/";
+		
+			document.getElementById("token-help").addEventListener('click', 
+				function()
+				{
+					document.getElementById("token-help-info").style.display = "block";
+					document.getElementById("token-help").style.display = "none";
+					document.getElementById("extra-space").style.display = "none";
+					document.getElementById("token").focus();
+				}, false);
+			//Cancel button
+			document.getElementById("cancel").addEventListener('click', 
+				function()
+				{
+					backToGame();
+				}, false);
+			//Register button
+			document.getElementById("register").addEventListener('click', 
+				function()
+				{
+					window.open("https://gamejolt.com/invite/TheCrafters001");
+				}, false);
+			//Enter key
+			document.getElementById("token").addEventListener("keypress", function(e)
+				{
+					if(e.keyCode == 13)
+					{
+						doLogin();
+					}
+				}, false);
+			document.getElementById("username").addEventListener("keypress", function(e)
+				{
+					if(e.keyCode == 13)
+					{
+						doLogin();
+					}
+				}, false);
+		
+			//Escape key
+			document.body.addEventListener("keyup", function(e)
+				{
+					if(e.keyCode == 27)
+					{
+						backToGame();
+					}
+				}, false);
+		
+			var isPerformingLogin = false;
+			function doLogin()
+			{
+				if (! isPerformingLogin)
+				{
+					isPerformingLogin = true;
+					//Now logging in...
+					document.getElementById("loginButton").innerHTML = "Logging in...";
+					document.getElementById("login-error").style.display = "none";
+					var uname = document.getElementById("username").value, utoken = document.getElementById("token").value;
+					opener.GameJolt.login(uname, utoken);
+					window.close();
+				}
+			}
+		
+			//Go back to the game
+			function backToGame()
+			{
+				window.close();
+			}
+		
+			document.getElementById("loginButton").addEventListener('click', doLogin, false);
+		
+			var gameID = "", privateKey = "", resultUserName = "", resultUserToken = "", isWindow = false, callbackCaller, redirect_to = "";
+		</script>
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core/dist/umd/popper.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap-dark-5/dist/js/darkmode.min.js"></script>
+	</body>
+</html>
